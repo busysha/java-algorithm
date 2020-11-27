@@ -1,0 +1,52 @@
+//配置插件仓库
+buildscript {
+    repositories {
+        maven {
+            url "http://nexus.17usoft.com/repository/mvn-all/"
+        }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath: 'mysql:mysql-connector-java:5.1.36'
+    }
+}
+//插件
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+idea {
+    module {
+        inheritOutputDirs = true
+    }
+}
+//必须强制设置编码
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.alibaba:fastjson:1.2.71'
+    implementation 'commons-io:commons-io:2.5:'
+    implementation 'commons-lang:commons-lang:2.6:'
+    implementation 'com.google.guava:guava:19.0:'
+    implementation 'commons-collections:commons-collections:3.2.1:'
+    implementation 'joda-time:joda-time:2.9.9:'
+    implementation 'dom4j:dom4j:1.6.1'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+/**
+ * 配置mapstruct任务
+ */
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+    //编译检查
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
