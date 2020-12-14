@@ -1,13 +1,17 @@
 //配置插件仓库
 buildscript {
     repositories {
-        maven {
-            url "http://nexus.17usoft.com/repository/mvn-all/"
-        }
-        maven { url "https://plugins.gradle.org/m2/" }
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
     }
     dependencies {
         classpath: 'mysql:mysql-connector-java:5.1.36'
+    }
+}
+allprojects {
+    repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
     }
 }
 //插件
