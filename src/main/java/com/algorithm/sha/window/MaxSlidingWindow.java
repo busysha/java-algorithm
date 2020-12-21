@@ -15,7 +15,7 @@ import java.util.List;
  */
 class MaxSlidingWindow {
     static class MonoTonicQueue {
-        LinkedList<Integer> q = new LinkedList();
+        LinkedList<Integer> q = new LinkedList<Integer>();
 
         public void push(int n) {
             while (!q.isEmpty() && q.getLast() < n) {
